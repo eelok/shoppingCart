@@ -61,7 +61,7 @@ describe('ShoppingCart addProduct', () => {
     });
 });
 
-describe('ShoppingCart removeProduct', () => {
+describe('ShoppingCart removeProduct()', () => {
     it('should remove product from shoppingCart', () => {
         const tShirt: IProduct = {
             id: 456,
@@ -89,5 +89,35 @@ describe('ShoppingCart removeProduct', () => {
         console.log(cartItems);
         assert.equal(cartItems.length, 1)
         assert.deepEqual(cartItems[0], {product: tShirt, quantity: 2} as ICartItem)
-    })
+    });
+
+    describe('getTotal()', () => {
+        it("should return price from all product in shopping cart", () => {
+            const tShirt: IProduct = {
+                id: 456,
+                name: "t-shirt",
+                price: 35,
+            };
+            const dress: IProduct = {
+                id: 67,
+                name: "dress",
+                price: 80,
+            };
+            const cartItems: ICartItem[] = [
+                {
+                    product: tShirt,
+                    quantity: 2
+                },
+                {
+                    product: dress,
+                    quantity: 1
+                }
+            ];
+            const shoppingCart: ShoppingCart = new ShoppingCart(cartItems);
+
+            const totalPrice: number =  shoppingCart.getTotal();
+
+            assert.equal(totalPrice, 115);
+        });
+    });
 })
