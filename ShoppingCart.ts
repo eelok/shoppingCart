@@ -37,10 +37,11 @@ export class ShoppingCart implements IShoppingCart{
     };
 
     checkout(): void {
-        //todo implement
+        console.log("total: ", this.getTotal());
+        this.emptyCart();
     }
 
-
-
-
+    private emptyCart(){
+        this.cartItems.splice(0, this.cartItems.length);
+    }
 }
