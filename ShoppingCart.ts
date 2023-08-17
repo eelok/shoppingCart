@@ -1,11 +1,14 @@
 import {ICartItem} from "./CartItem";
 import {IProduct} from "./Product";
+import * as console from "console";
 
 export interface IShoppingCart {
     addProduct(product: IProduct, quantity: number): void;
     removeProduct(productId: number): void;
     // Calculate and return the total cost of the products in the cart.
     getTotal(): number;
+    // Display a message with the total cost and empty the cart.
+    checkout(): void;
 }
 export class ShoppingCart implements IShoppingCart{
     private cartItems: ICartItem[];
@@ -26,13 +29,18 @@ export class ShoppingCart implements IShoppingCart{
     removeProduct(productId: number): void {
         const indexOfExistingProduct = this.cartItems.findIndex(cartItems => cartItems.product.id === productId);
         this.cartItems.splice(indexOfExistingProduct, 1)
-        console.log(this.cartItems);
     }
     getTotal(): number {
        return this.cartItems.reduce((acc, currVal): number => {
            return acc + currVal.product.price;
        }, 0)
     };
+
+    checkout(): void {
+        //todo implement
+    }
+
+
 
 
 }
