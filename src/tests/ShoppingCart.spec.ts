@@ -1,6 +1,6 @@
-import {ShoppingCart} from "../../ShoppingCart";
-import {ICartItem} from "../../CartItem";
-import {IProduct} from "../../Product";
+import {ShoppingCart} from "../ShoppingCart";
+import {ICartItem} from "../CartItem";
+import {IProduct} from "../Product";
 import {assert} from "chai";
 
 describe('ShoppingCart addProduct', () => {
@@ -96,12 +96,12 @@ describe('ShoppingCart removeProduct()', () => {
             const tShirt: IProduct = {
                 id: 456,
                 name: "t-shirt",
-                price: 35,
+                price: 10,
             };
             const dress: IProduct = {
                 id: 67,
                 name: "dress",
-                price: 80,
+                price: 5,
             };
             const cartItems: ICartItem[] = [
                 {
@@ -114,10 +114,11 @@ describe('ShoppingCart removeProduct()', () => {
                 }
             ];
             const shoppingCart: ShoppingCart = new ShoppingCart(cartItems);
-
+            console.log('test');
+            shoppingCart.getTotal();
             const totalPrice: number =  shoppingCart.getTotal();
 
-            assert.equal(totalPrice, 115);
+            assert.equal(totalPrice, 25);
         });
     });
 })

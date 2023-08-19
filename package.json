@@ -1,5 +1,8 @@
 {
-  "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts'",
+  "scripts":{
+    "start": "ts-node src/ShoppingCart.ts",
+    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"es6\"}' mocha --require ts-node/register 'test/**/*.ts'"
+  },
   "devDependencies": {
     "@types/chai": "^4.3.5",
     "@types/mocha": "^10.0.1",
