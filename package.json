@@ -1,6 +1,6 @@
 {
   "scripts":{
-    "start": "ts-node src/ShoppingCart.ts",
+    "start": "ts-node src/App.ts",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"es6\"}' mocha --require ts-node/register 'test/**/*.ts'"
   },
   "devDependencies": {

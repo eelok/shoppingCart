@@ -1,5 +1,5 @@
-import {ICartItem} from "./CartItem";
-import {IProduct} from "./Product";
+import {ICartItem} from "./ICartItem";
+import {IProduct} from "./IProduct";
 
 export interface IShoppingCart {
     addProduct(product: IProduct, quantity: number): void;
@@ -30,16 +30,25 @@ export class ShoppingCart implements IShoppingCart {
         const indexOfExistingProduct = this.cartItems.findIndex(cartItems => cartItems.product.id === productId);
         this.cartItems.splice(indexOfExistingProduct, 1);
     }
+// old method
+    // getTotal(): number {
+    //     return this.cartItems.reduce((acc, currVal): number => {
+    //         if (currVal.quantity !== 1) {
+    //             const priceByQuantity: number = currVal.product.price * currVal.quantity;
+    //             return acc + priceByQuantity;
+    //         }
+    //         return acc + currVal.product.price;
+    //     }, 0);
+    // };
 
     getTotal(): number {
         return this.cartItems.reduce((acc, currVal): number => {
-            if (currVal.quantity !== 1) {
-                const priceByQuantity: number = currVal.product.price * currVal.quantity;
-                return acc + priceByQuantity;
-            }
-            return acc + currVal.product.price;
+            const price = currVal.product.price;
+            const quantity = currVal.quantity;
+            const totalFoProduct = currVal.product.pricingStrategy.calculatePrice(price, quantity);
+            return acc + totalFoProduct;
         }, 0);
-    };
+    }
 
     checkout(): void {
         console.log("total: ", this.getTotal());
@@ -50,12 +59,3 @@ export class ShoppingCart implements IShoppingCart {
         this.cartItems.splice(0, this.cartItems.length);
     }
 }
-
-const shoppingCart: IShoppingCart = new ShoppingCart([]);
-shoppingCart.addProduct({id: 1, name: "t-shirt", price: 10}, 1);
-shoppingCart.addProduct({id: 3, name: "pulover", price: 15}, 2);
-shoppingCart.addProduct({id: 2, name: "dress", price: 3}, 5);
-shoppingCart.addProduct({id: 22, name: "dress001", price: 10}, 1);
-shoppingCart.removeProduct(1);
-shoppingCart.checkout();
-shoppingCart.getTotal();

@@ -1,4 +1,4 @@
-import {BOGOPricingStrategy} from "../../promotions/BOGOPricingStrategy";
+import {BOGOPricingStrategy} from "../../pricingStrategies/BOGOPricingStrategy";
 import {expect} from "chai";
 
 describe('BOGOPricingStrategy', () => {

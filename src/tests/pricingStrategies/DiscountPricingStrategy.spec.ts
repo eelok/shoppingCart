@@ -1,4 +1,4 @@
-import {DiscountPricingStrategy} from "../../promotions/DiscountPricingStrategy";
+import {DiscountPricingStrategy} from "../../pricingStrategies/DiscountPricingStrategy";
 import {assert} from "chai";
 
 describe('DiscountPricingStrategy', () => {

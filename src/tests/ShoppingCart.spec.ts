@@ -1,6 +1,6 @@
 import {ShoppingCart} from "../ShoppingCart";
-import {ICartItem} from "../CartItem";
-import {IProduct} from "../Product";
+import {ICartItem} from "../ICartItem";
+import {IProduct} from "../IProduct";
 import {assert} from "chai";
 
 describe('ShoppingCart addProduct', () => {
