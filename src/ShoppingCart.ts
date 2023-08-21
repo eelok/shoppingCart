@@ -30,16 +30,6 @@ export class ShoppingCart implements IShoppingCart {
         const indexOfExistingProduct = this.cartItems.findIndex(cartItems => cartItems.product.id === productId);
         this.cartItems.splice(indexOfExistingProduct, 1);
     }
-// old method
-    // getTotal(): number {
-    //     return this.cartItems.reduce((acc, currVal): number => {
-    //         if (currVal.quantity !== 1) {
-    //             const priceByQuantity: number = currVal.product.price * currVal.quantity;
-    //             return acc + priceByQuantity;
-    //         }
-    //         return acc + currVal.product.price;
-    //     }, 0);
-    // };
 
     getTotal(): number {
         return this.cartItems.reduce((acc, currVal): number => {
