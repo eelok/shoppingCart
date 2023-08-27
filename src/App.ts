@@ -2,6 +2,7 @@ import {IShoppingCart, ShoppingCart} from "./ShoppingCart";
 import {NormalPricingStrategy} from "./pricingStrategies/NormalPricingStrategy";
 import {DiscountPricingStrategy} from "./pricingStrategies/DiscountPricingStrategy";
 import {BOGOPricingStrategy} from "./pricingStrategies/BOGOPricingStrategy";
+import {IProduct} from "./IProduct";
 
 const shoppingCart: IShoppingCart = new ShoppingCart([]);
 
@@ -30,3 +31,13 @@ const bogoPricingStrategy: BOGOPricingStrategy = new BOGOPricingStrategy();
 const shoppingCart003: IShoppingCart = new ShoppingCart([]);
 shoppingCart003.addProduct({id: 1, name: "t-shirt", price: 10, pricingStrategy: bogoPricingStrategy}, 3);
 console.log(shoppingCart003.getTotal());
+
+const dress: IProduct = {id: 22, name: "dress", price: 5, pricingStrategy: pricingStrategyNormal};
+
+const jeans: IProduct = {
+    id: 23,
+    name: "jeans",
+    price: 10,
+    pricingStrategy: new DiscountPricingStrategy(20)
+}
+
